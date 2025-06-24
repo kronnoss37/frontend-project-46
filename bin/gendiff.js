@@ -2,6 +2,7 @@
 
 import { program } from 'commander';
 import parseFile from '../src/fileParser.js'
+import compare from '../src/filesComparison.js'
 
 program
 	.name('gendiff')
@@ -12,8 +13,10 @@ program
 	.action((filepath1, filepath2, options) => {
     const firstFileData = parseFile(filepath1);
     const secondFileData = parseFile(filepath2);
-		console.log(`file1: ${JSON.stringify(firstFileData)}`);
-		console.log(`file2: ${JSON.stringify(secondFileData)}`);
+    const result = compare(firstFileData, secondFileData);
+		// console.log(`file1: ${JSON.stringify(firstFileData)}`);
+		// console.log(`file2: ${JSON.stringify(secondFileData)}`);
+    console.log(result);
 	});
 
 program.parse();

@@ -3,9 +3,11 @@
 import fs from 'fs';
 import path from "path";
 
+const getFileFormat = (filePath) => filePath.split('.').at(-1);
+
 export default (filePath) => {
-  const fileFormat = filePath.split('.').at(-1);
-  console.log(fileFormat);
+  const fileFormat = getFileFormat(filePath);
+  // console.log(fileFormat);
   const fileData = fs.readFileSync(path.resolve(filePath));
   return JSON.parse(fileData);
 };

@@ -9,10 +9,10 @@ jobs:
 
       # Step 1: 
       - name: Clone the git repository code
-        uses: actions/checkount@v4
+        uses: actions/checkout@v4
 
       # Step 2: 
-      - name: setum nodejs
+      - name: setup nodejs
         uses: actions/setup-node@v4
       
       # Step 3:   

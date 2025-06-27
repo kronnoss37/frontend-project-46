@@ -1,0 +1,34 @@
+
+name: CI
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+
+      # Step 1: 
+      - name: Clone the git repository code
+        uses: actions/checkount@v4
+
+      # Step 2: 
+      - name: setum nodejs
+        uses: actions/setup-node@v4
+      
+      # Step 3:   
+      - name: Instal dependencies
+        run: make install
+
+      # Step 4:   
+      - name: Run Eslint
+        run: make lint
+
+      # Step 5:   
+      - name: Run tests
+        run: make test
+
+      # Step 6:
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarqube-scan-actio@v5
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

@@ -11,12 +11,15 @@ program
   .arguments('<filepath1> <filepath2>')
   .option('-f, --format [type]', 'output format')
   .action((filepath1, filepath2) => { // options
-    const firstFileData = parseFile(filepath1)
-    const secondFileData = parseFile(filepath2)
-    const result = compare(firstFileData, secondFileData)
-    // console.log(`file1: ${JSON.stringify(firstFileData)}`);
-    // console.log(`file2: ${JSON.stringify(secondFileData)}`);
-    console.log(result)
+    try {
+      const firstFileData = parseFile(filepath1)
+      const secondFileData = parseFile(filepath2)
+      const filesDifferrence = compare(firstFileData, secondFileData)
+      console.log(filesDifferrence)
+    }
+    catch (error) {
+      console.log(error)
+    }
   })
 
 program.parse()

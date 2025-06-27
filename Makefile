@@ -9,3 +9,11 @@ publish:
 # Target: run file gendiff.js
 gendiff:
 	node bin/gendiff.js
+
+#	Target: run eslint in all js files
+lint:
+	npx eslint .
+
+#	Target: run all tests in project
+test:
+	npm test

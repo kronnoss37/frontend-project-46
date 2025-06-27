@@ -17,3 +17,9 @@ lint:
 #	Target: run all tests in project
 test:
 	npm test
+
+#	Target: run test coverage in project
+test-coverage:
+	npm test -- --coverage
+
+.PHONY: test

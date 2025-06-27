@@ -1,14 +1,20 @@
 import fs from 'fs'
 import path from 'path'
+import yaml from 'js-yaml'
 
 const getFileFormat = filePath => filePath.split('.').at(-1)
 
+const getFunForParsing = (format) => {
+  if (format === 'json') return JSON.parse
+  if (format === 'yml' || format === 'yaml') return yaml.load
+}
 export default (filePath) => {
-  // const fileFormat = getFileFormat(filePath)
-  getFileFormat(filePath)
-  // console.log(fileFormat);
+  const fileFormat = getFileFormat(filePath)
 
   fs.accessSync(filePath, fs.constants.R_OK)
+
   const fileData = fs.readFileSync(path.resolve(filePath), 'utf-8')
-  return JSON.parse(fileData)
+  const parse = getFunForParsing(fileFormat)
+  if (!parse) throw new Error('Invalid file format.') // typeof parse === 'undefined'
+  return parse(fileData)
 }

@@ -1,8 +1,7 @@
-// forCompare
 import _ from 'lodash'
 
 export default (object1, object2) => {
-  if (!_.isPlainObject(object1) && !_.isPlainObject(object2)) return // `Invalid parameter passed`
+  if (!_.isPlainObject(object1) || !_.isPlainObject(object2)) throw new Error(`Invalid parameter passed`)
 
   const sortedUniqueObjectsKeys = _.sortBy(_.union(Object.keys(object1), Object.keys(object2)))
 

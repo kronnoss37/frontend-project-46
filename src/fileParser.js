@@ -1,5 +1,3 @@
-// forParsing
-
 import fs from 'fs'
 import path from 'path'
 
@@ -9,6 +7,8 @@ export default (filePath) => {
   // const fileFormat = getFileFormat(filePath)
   getFileFormat(filePath)
   // console.log(fileFormat);
-  const fileData = fs.readFileSync(path.resolve(filePath))
+
+  fs.accessSync(filePath, fs.constants.R_OK)
+  const fileData = fs.readFileSync(path.resolve(filePath), 'utf-8')
   return JSON.parse(fileData)
 }

@@ -10,5 +10,8 @@
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=kronnoss37_frontend-project-46&metric=coverage)](https://sonarcloud.io/summary/new_code?id=kronnoss37_frontend-project-46)
 [![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=kronnoss37_frontend-project-46&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=kronnoss37_frontend-project-46)
 
-### See how to run GenDiff tool in terminal with comparison of two json files:
+## See how to run GenDiff tool in terminal with comparison of two json files:
 [![asciicast](https://asciinema.org/a/MSbS8x8KigXzCQ4zQ8oo84IFj.svg)](https://asciinema.org/a/MSbS8x8KigXzCQ4zQ8oo84IFj)
+
+## See how to compare two yml files:
+[![asciicast](https://asciinema.org/a/roAepCshvpGBmjFxQZ8SZgi4c.svg)](https://asciinema.org/a/roAepCshvpGBmjFxQZ8SZgi4c)

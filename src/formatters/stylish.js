@@ -40,6 +40,7 @@ export default (differences) => {
       if (data.status === 'deleted') {
         return [`${currIndent}- ${data.key}: ${currValue}`]
       }
+      return []
     })
     return `{\n${formattedDiff.join(`\n`)}\n${replacer.repeat(indentSize - spacesCount)}}`
   }

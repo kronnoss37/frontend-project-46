@@ -6,6 +6,6 @@ const getFunForFormatting = (format) => {
 
 export default (data, format) => {
   const formatData = getFunForFormatting(format)
-  // throw invalid format (undefined - formatData)
+  if (!formatData) throw new Error(`Format "${format}" is invalid. Supported formats: stylish!`)
   return formatData(data)
 }

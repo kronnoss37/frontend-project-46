@@ -10,12 +10,15 @@ const getFilePath = fileName => path.join(__dirname, '..', '__fixtures__', fileN
 test('parse json and yml files', () => {
   const result = {
     timeout: 20,
-    verbose: true,
     host: 'hexlet.io',
+    obj: {
+      one: 1,
+      two: 'two',
+    },
   }
 
-  const jsonFilePath = getFilePath('file2.json')
-  const ymlFilePath = getFilePath('file2.yml')
+  const jsonFilePath = getFilePath('fileForParse.json')
+  const ymlFilePath = getFilePath('fileForParse.yaml')
   expect(parseFile(jsonFilePath)).toEqual(result)
   expect(parseFile(ymlFilePath)).toEqual(result)
 })

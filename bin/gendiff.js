@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
 import { program } from 'commander'
-import parseFile from '../src/fileParser.js'
-import gendiff from '../src/filesComparison.js'
+import parseFile from '../src/parsers.js'
+import gendiff from '../src/gendiff.js'
 
 program
   .name('gendiff')

@@ -1,8 +1,8 @@
 import { fileURLToPath } from 'url'
 import fs from 'fs'
 import path from 'path'
-import gendiff from '../src/filesComparison.js'
-import parseFile from '../src/fileParser.js'
+import gendiff from '../src/gendiff.js'
+import parseFile from '../src/parsers.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)

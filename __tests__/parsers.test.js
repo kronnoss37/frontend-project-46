@@ -1,6 +1,6 @@
 import { fileURLToPath } from 'url'
 import path from 'path'
-import parseFile from '../src/fileParser.js'
+import parseFile from '../src/parsers.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)

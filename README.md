@@ -16,8 +16,8 @@
 ## See how to compare two yml files:
 [![asciicast](https://asciinema.org/a/roAepCshvpGBmjFxQZ8SZgi4c.svg)](https://asciinema.org/a/roAepCshvpGBmjFxQZ8SZgi4c) -->
 
-## See how to run GenDiff tool in terminal with comparison of two files using Stylish format (supported formats: json and yml):
+#### See how to run GenDiff tool in terminal with comparison of two files using Stylish format (supported formats: json and yml):
 [![asciicast](https://asciinema.org/a/eTleFAKumHYA9xLJH2BgIJpHb.svg)](https://asciinema.org/a/eTleFAKumHYA9xLJH2BgIJpHb)
 
-## See how to compare two files using Plain format (supported formats: json and yml):
+#### See how to compare two files using Plain format (supported formats: json and yml):
 [![asciicast](https://asciinema.org/a/3iAORfA4olmLECv5Ut8dmajey.svg)](https://asciinema.org/a/3iAORfA4olmLECv5Ut8dmajey)

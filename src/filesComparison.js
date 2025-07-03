@@ -1,26 +1,38 @@
 import _ from 'lodash'
+import formatData from './formatters/index.js'
 
-export default (object1, object2) => {
-  if (!_.isPlainObject(object1) || !_.isPlainObject(object2)) throw new Error(`Invalid parameter passed`)
+const getDifferences = (object1, object2) => {
+  if (!_.isPlainObject(object1) || !_.isPlainObject(object2)) throw new Error(`Invalid parameter passed`) // ???
 
   const sortedUniqueObjectsKeys = _.sortBy(_.union(Object.keys(object1), Object.keys(object2)))
 
-  const formattedKeys = sortedUniqueObjectsKeys.reduce((acc, key) => {
+  const differences = sortedUniqueObjectsKeys.map((key) => {
+    const keyValueInFirstObj = object1[key]
+    const keyValueInSecondObj = object2[key]
+
+    if (_.isPlainObject(keyValueInFirstObj) && _.isPlainObject(keyValueInSecondObj)) {
+      return { key, status: 'nested', children: getDifferences(keyValueInFirstObj, keyValueInSecondObj) }
+    }
+
     if (!Object.hasOwn(object1, key)) {
-      acc.push(`  + ${key}: ${object2[key]}`)
+      return { key, value: keyValueInSecondObj, status: 'added' }
     }
     else if (!Object.hasOwn(object2, key)) {
-      acc.push(`  - ${key}: ${object1[key]}`)
+      return { key, value: keyValueInFirstObj, status: 'deleted' }
     }
-    else if (object1[key] === object2[key]) {
-      acc.push(`    ${key}: ${object1[key]}`)
+    else if (keyValueInFirstObj === keyValueInSecondObj) {
+      return { key, value: keyValueInFirstObj, status: 'unchanged' }
     }
     else {
-      acc.push(`  - ${key}: ${object1[key]}`)
-      acc.push(`  + ${key}: ${object2[key]}`)
+      return { key, oldValue: keyValueInFirstObj, newValue: keyValueInSecondObj, status: 'changed' }
     }
-    return acc
-  }, [])
+  })
 
-  return `{\n${formattedKeys.join('\n')}\n}`
+  return differences
+}
+
+export default (object1, object2, format = 'stylish') => {
+  const differences = getDifferences(object1, object2)
+  const formattedDiff = formatData(differences, format)
+  return formattedDiff
 }

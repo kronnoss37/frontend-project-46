@@ -1,7 +1,7 @@
 import { fileURLToPath } from 'url'
 import fs from 'fs'
 import path from 'path'
-import compare from '../src/filesComparison.js'
+import gendiff from '../src/filesComparison.js'
 import parseFile from '../src/fileParser.js'
 
 const __filename = fileURLToPath(import.meta.url)
@@ -17,26 +17,30 @@ beforeAll(() => {
   expectedData.stylish = readFile('expected-stylish.txt')
 })
 
-test('compare json files', () => {
+test('generate difference between json files', () => {
   const firstFile = parseFile(getFilePath('file1.json'))
   const secondFile = parseFile(getFilePath('file2.json'))
 
-  expect(compare(firstFile, secondFile)).toEqual(expectedData.stylish)
+  expect(gendiff(firstFile, secondFile)).toEqual(expectedData.stylish)
 })
 
-test('compare yml files', () => {
+test('generate difference between yml files', () => {
   const firstFile = parseFile(getFilePath('file1.yml'))
   const secondFile = parseFile(getFilePath('file2.yml'))
 
-  expect(compare(firstFile, secondFile)).toEqual(expectedData.stylish)
+  expect(gendiff(firstFile, secondFile)).toEqual(expectedData.stylish)
 })
 
-test('compare empty objects', () => {
-  expect(compare({}, {})).toEqual(`{\n\n}`)
+test('generate difference between empty objects', () => {
+  expect(gendiff({}, {})).toEqual(`{\n\n}`)
 })
 
-test('compare if param is not a plain object', () => {
-  expect(() => compare(10, true)).toThrow()
-  expect(() => compare(undefined, 'string')).toThrow()
-  expect(() => compare({}, null)).toThrow()
+test('generate difference if param is not a plain object', () => {
+  expect(() => gendiff(10, true)).toThrow()
+  expect(() => gendiff(undefined, 'string')).toThrow()
+  expect(() => gendiff({}, null)).toThrow()
+})
+
+test('invalid format', () => {
+  expect(() => gendiff({}, {}, 'invalid-format')).toThrow()
 })

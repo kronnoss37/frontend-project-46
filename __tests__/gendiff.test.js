@@ -10,25 +10,27 @@ const __dirname = path.dirname(__filename)
 const getFilePath = fileName => path.join(__dirname, '..', '__fixtures__', fileName)
 const readFile = fileName => fs.readFileSync(getFilePath(fileName), 'utf-8')
 
-// Обработка примитивных значений
 const expectedData = { }
 
 beforeAll(() => {
   expectedData.stylish = readFile('expected-stylish.txt')
+  expectedData.plain = readFile('expected-plain.txt')
 })
 
-test('generate difference between json files', () => {
+test('generate difference between json files with stylish/plain format', () => {
   const firstFile = parseFile(getFilePath('file1.json'))
   const secondFile = parseFile(getFilePath('file2.json'))
 
   expect(gendiff(firstFile, secondFile)).toEqual(expectedData.stylish)
+  expect(gendiff(firstFile, secondFile, 'plain')).toEqual(expectedData.plain)
 })
 
-test('generate difference between yml files', () => {
+test('generate difference between yml files with stylish/plain format', () => {
   const firstFile = parseFile(getFilePath('file1.yml'))
   const secondFile = parseFile(getFilePath('file2.yml'))
 
   expect(gendiff(firstFile, secondFile)).toEqual(expectedData.stylish)
+  expect(gendiff(firstFile, secondFile, 'plain')).toEqual(expectedData.plain)
 })
 
 test('generate difference between empty objects', () => {

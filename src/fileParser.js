@@ -15,6 +15,6 @@ export default (filePath) => {
 
   const fileData = fs.readFileSync(path.resolve(filePath), 'utf-8')
   const parse = getFunForParsing(fileFormat)
-  if (!parse) throw new Error('Invalid file format.') // typeof parse === 'undefined'
+  if (!parse) throw new Error(`File format "${fileFormat}". Supported formats: json and yml(yaml)!`) // typeof parse === 'undefined'
   return parse(fileData)
 }

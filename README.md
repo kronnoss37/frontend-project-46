@@ -21,3 +21,6 @@
 
 #### See how to compare two files using Plain format (supported formats: json and yml):
 [![asciicast](https://asciinema.org/a/3iAORfA4olmLECv5Ut8dmajey.svg)](https://asciinema.org/a/3iAORfA4olmLECv5Ut8dmajey)
+
+#### See how to compare two files using Json format (supported formats: json and yml):
+[![asciicast](https://asciinema.org/a/3iAORfA4olmLECv5Ut8dmajey.svg)](https://asciinema.org/a/3iAORfA4olmLECv5Ut8dmajey)

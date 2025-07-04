@@ -1,20 +1,20 @@
 import _ from 'lodash'
 
-const replacer = ' '
-const spacesCount = 4
-const symbolOffset = 2
-
-const formatValue = (value, depth) => {
+const formatValue = (value, depth, replacer, spacesCount) => {
   if (!_.isPlainObject(value)) return `${value}`
   const indentSize = depth * spacesCount
 
   const entries = Object.entries(value).map(([key, value]) => {
-    return `${replacer.repeat(indentSize)}${key}: ${formatValue(value, depth + 1)}`
+    return `${replacer.repeat(indentSize)}${key}: ${formatValue(value, depth + 1, replacer, spacesCount)}`
   })
   return `{\n${entries.join(`\n`)}\n${replacer.repeat(indentSize - spacesCount)}}`
 }
 
 export default (differences) => {
+  const replacer = ' '
+  const spacesCount = 4
+  const symbolOffset = 2
+
   const iter = (currDiff, depth) => {
     const indentSize = depth * spacesCount
     const currIndent = replacer.repeat(indentSize - symbolOffset)
@@ -24,11 +24,11 @@ export default (differences) => {
         return [`${currIndent}  ${data.key}: ${iter(data.children, depth + 1)}`]
       }
 
-      const currValue = formatValue(data.value, depth + 1)
+      const currValue = formatValue(data.value, depth + 1, replacer, spacesCount)
 
       if (data.status === 'changed') {
-        const oldValue = formatValue(data.oldValue, depth + 1)
-        const newValue = formatValue(data.newValue, depth + 1)
+        const oldValue = formatValue(data.oldValue, depth + 1, replacer, spacesCount)
+        const newValue = formatValue(data.newValue, depth + 1, replacer, spacesCount)
         return [`${currIndent}- ${data.key}: ${oldValue}`, `${currIndent}+ ${data.key}: ${newValue}`]
       }
       if (data.status === 'unchanged') {

@@ -15,14 +15,16 @@ const expectedData = { }
 beforeAll(() => {
   expectedData.stylish = readFile('expected-stylish.txt')
   expectedData.plain = readFile('expected-plain.txt')
+  expectedData.json = readFile('expected-json.json')
 })
 
-test('generate difference between json files with stylish/plain format', () => {
+test('generate difference between json files with stylish/plain/json format', () => {
   const firstFile = parseFile(getFilePath('file1.json'))
   const secondFile = parseFile(getFilePath('file2.json'))
 
   expect(gendiff(firstFile, secondFile)).toEqual(expectedData.stylish)
   expect(gendiff(firstFile, secondFile, 'plain')).toEqual(expectedData.plain)
+  expect(gendiff(firstFile, secondFile, 'json')).toEqual(JSON.stringify(JSON.parse(expectedData.json), null, 2))
 })
 
 test('generate difference between yml files with stylish/plain format', () => {

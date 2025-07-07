@@ -5,8 +5,15 @@ import yaml from 'js-yaml'
 const getFileFormat = filePath => filePath.split('.').at(-1)
 
 const getFunForParsing = (format) => {
-  if (format === 'json') return JSON.parse
-  if (format === 'yml' || format === 'yaml') return yaml.load
+  switch (format) {
+    case 'json':
+      return JSON.parse
+    case 'yml':
+    case 'yaml':
+      return yaml.load
+    default:
+      throw new Error(`File format "${format}". Supported formats: json and yml(yaml)!`)
+  }
 }
 export default (filePath) => {
   const fileFormat = getFileFormat(filePath)
@@ -15,6 +22,5 @@ export default (filePath) => {
 
   const fileData = fs.readFileSync(path.resolve(filePath), 'utf-8')
   const parse = getFunForParsing(fileFormat)
-  if (!parse) throw new Error(`File format "${fileFormat}". Supported formats: json and yml(yaml)!`) // typeof parse === 'undefined'
   return parse(fileData)
 }

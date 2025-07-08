@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 
 import { program } from 'commander'
-import parseFile from '../src/parsers.js'
 import gendiff from '../src/gendiff.js'
 
 program
@@ -12,9 +11,7 @@ program
   .option('-f, --format [type]', 'output format', 'stylish')
   .action((filepath1, filepath2, options) => {
     try {
-      const firstFileData = parseFile(filepath1)
-      const secondFileData = parseFile(filepath2)
-      const filesDifferrence = gendiff(firstFileData, secondFileData, options.format)
+      const filesDifferrence = gendiff(filepath1, filepath2, options.format)
       console.log(filesDifferrence)
     }
     catch (error) {

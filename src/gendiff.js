@@ -1,8 +1,10 @@
 import _ from 'lodash'
 import formatData from './formatters/index.js'
+import parseFile from './parsers.js'
 
-const getDifferences = (object1, object2) => {
-  if (!_.isPlainObject(object1) || !_.isPlainObject(object2)) throw new Error(`One or both of the passed arguments are invalid: first argument is ${object1}, second argument is ${object2}`)
+export const getDifferences = (object1, object2) => {
+  if (!_.isPlainObject(object1) || !_.isPlainObject(object2)) throw new Error(
+    `One or both of the passed arguments are invalid: first argument is ${object1}, second argument is ${object2}`)
 
   const sortedUniqueObjectsKeys = _.sortBy(_.union(Object.keys(object1), Object.keys(object2)))
 
@@ -31,8 +33,10 @@ const getDifferences = (object1, object2) => {
   return differences
 }
 
-export default (object1, object2, format = 'stylish') => {
-  const differences = getDifferences(object1, object2)
+export default (firstFilePath, secondFilePath, format = 'stylish') => {
+  const firstFileData = parseFile(firstFilePath)
+  const secondFileData = parseFile(secondFilePath)
+  const differences = getDifferences(firstFileData, secondFileData)
   const formattedDiff = formatData(differences, format)
   return formattedDiff
 }

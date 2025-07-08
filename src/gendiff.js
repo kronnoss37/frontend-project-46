@@ -2,7 +2,7 @@ import _ from 'lodash'
 import formatData from './formatters/index.js'
 
 const getDifferences = (object1, object2) => {
-  if (!_.isPlainObject(object1) || !_.isPlainObject(object2)) throw new Error(`Invalid parameter passed`)
+  if (!_.isPlainObject(object1) || !_.isPlainObject(object2)) throw new Error(`One or both of the passed arguments are invalid: first argument is ${object1}, second argument is ${object2}`)
 
   const sortedUniqueObjectsKeys = _.sortBy(_.union(Object.keys(object1), Object.keys(object2)))
 

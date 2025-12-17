@@ -11,8 +11,8 @@ program
   .option('-f, --format [type]', 'output format', 'stylish')
   .action((filepath1, filepath2, options) => {
     try {
-      const filesDifferrence = gendiff(filepath1, filepath2, options.format)
-      console.log(filesDifferrence)
+      const filesDifference = gendiff(filepath1, filepath2, options.format)
+      console.log(filesDifference)
     }
     catch (error) {
       console.log(error)

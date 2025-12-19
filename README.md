@@ -75,41 +75,41 @@ npm link
 
 ## 🧭 Примеры использования
 
-##### Вывод справки об cli-утилите
+#### Вывод справки об cli-утилите
 ```bash
 gendiff -h
 ```
 
-##### Общий формат команды
+#### Общий формат команды
 ```bash
 gendiff [options] <filepath1> <filepath2>
 ```
 - `[options]` — дополнительные параметры (например, формат вывода)
 - `<filepath1> <filepath2>` - пути до файлов
 
-##### Сравнение JSON-файлов
+#### Сравнение JSON-файлов
 ```bash
 # Example with ready-made json files
 gendiff __fixtures__/file1.json __fixtures__/file2.json
 ```
 
-##### Сравнение YAML-файлов
+#### Сравнение YAML-файлов
 ```bash
 # Example with ready-made yml files
 gendiff __fixtures__/file1.yml __fixtures__/file2.yml
 ```
 
-##### Использование формата stylish (по умолчанию)
+#### Использование формата stylish (по умолчанию)
 ```bash
 gendiff __fixtures__/file1.json __fixtures__/file2.json
 ```
 
-##### Использование формата json
+#### Использование формата json
 ```bash
 gendiff -f json __fixtures__/file1.json __fixtures__/file2.json
 ```
 
-##### Использование формата plain text
+#### Использование формата plain text
 ```bash
 gendiff -f plain __fixtures__/file1.json __fixtures__/file2.json
 ```
@@ -122,13 +122,13 @@ gendiff -f plain __fixtures__/file1.json __fixtures__/file2.json
 See how to compare two yml files:
 [![asciicast](https://asciinema.org/a/roAepCshvpGBmjFxQZ8SZgi4c.svg)](https://asciinema.org/a/roAepCshvpGBmjFxQZ8SZgi4c) -->
 
-##### 1. Пример запуска приложения, используя Stylish format (форматы файлов: json и yml):
+#### 1. Пример запуска приложения, используя Stylish format (форматы файлов: json и yml):
 [![asciicast](https://asciinema.org/a/eTleFAKumHYA9xLJH2BgIJpHb.svg)](https://asciinema.org/a/eTleFAKumHYA9xLJH2BgIJpHb)
 
-##### 2. Пример запуска приложения, используя Plain format (форматы файлов: json и yml):
+#### 2. Пример запуска приложения, используя Plain format (форматы файлов: json и yml):
 [![asciicast](https://asciinema.org/a/3iAORfA4olmLECv5Ut8dmajey.svg)](https://asciinema.org/a/3iAORfA4olmLECv5Ut8dmajey)
 
-##### 3. Пример запуска приложения, используя JSON format (форматы файлов: json и yml):
+#### 3. Пример запуска приложения, используя JSON format (форматы файлов: json и yml):
 [![asciicast](https://asciinema.org/a/xNqbUh2rwp4f4YqtUf1Ej1uMw.svg)](https://asciinema.org/a/xNqbUh2rwp4f4YqtUf1Ej1uMw)
 
 ## 👤 Автор

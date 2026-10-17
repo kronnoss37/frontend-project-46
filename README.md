@@ -130,7 +130,3 @@ See how to compare two yml files:
 
 #### 3. Пример запуска приложения, используя JSON format (форматы файлов: json и yml):
 [![asciicast](https://asciinema.org/a/xNqbUh2rwp4f4YqtUf1Ej1uMw.svg)](https://asciinema.org/a/xNqbUh2rwp4f4YqtUf1Ej1uMw)
-
-## 👤 Автор
-
-#### Kirill — Frontend Developer
